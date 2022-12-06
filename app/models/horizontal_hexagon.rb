@@ -1,13 +1,13 @@
 class HorizontalHexagon < Hexagon
-  alias_method :width,  :vertex_to_vertex
-  alias_method :height, :side_to_side
+  alias_method :height, :vertex_to_vertex
+  alias_method :width,  :side_to_side
 
-  def y = (row * height) + (column.even? ? height / 2 : 0) - (height / 2)
-  def x = (column * (side_length + (width - side_length) / 2)) - ((width - side_length) / 2)
+  def x = (column * width) + (row.even? ? width / 2 : 0) - (width / 2)
+  def y = (row * (side_length + (height - side_length) / 2)) - ((height - side_length) / 2)
 
   def points
     (0...6).map do |point|
-      angle_deg = 60 * point
+      angle_deg = 60 * point + 30
       angle_rad = Math::PI / 180 * angle_deg
 
       [
